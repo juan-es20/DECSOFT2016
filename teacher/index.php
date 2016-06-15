@@ -20,21 +20,22 @@ if(isset($_POST['btn-login']))
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <title>Evaluacion en Linea</title>
     <!-- Bootstrap -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="../bootstrapp/css/bootstrap.css">
     <link href="../assets/styles.css" rel="stylesheet" media="screen">
-     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <link  rel="stylesheet" type="text/css" href="../bootstrapp/css/cssAux.css">
+
   </head>
-  <body id="login">
-    <div class="container">
+  <body >
+    <div class="container well" id="sha">
 		<?php 
 		if(isset($_GET['inactive']))
 		{
@@ -46,7 +47,7 @@ if(isset($_POST['btn-login']))
             <?php
 		}
 		?>
-        <form class="form-signin" method="post">
+        <form class="logueo" method="POST">
         <?php
         if(isset($_GET['error']))
 		{
@@ -58,16 +59,25 @@ if(isset($_POST['btn-login']))
             <?php
 		}
 		?>
-        <h2 class="form-signin-heading">Iniciar Sesion.</h2><hr />
-        <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
-        <input type="password" class="input-block-level" placeholder="Password" name="txtpass" required />
-     	<hr />
-        <button class="btn btn-large btn-primary" type="submit" name="btn-login">Iniciar Sesion</button>
-      <hr />
+        <div class="row">
+      <div class="col-xs-12">
+        <img src="../bootstrapp/img/login.png" class="img-responsive" id="login">
+      </div>
+    </div>
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="correo electronico" name="txtemail" requerid autofocus>
+                 
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="contraseña" name="txtpass" required>
+
+      </div>
+      <button class="btn btn-primary" type="submit" name="btn-login">iniciar sesion</button>
+      
       </form>
 
     </div> <!-- /container -->
-    <script src="../bootstrap/js/jquery-1.9.1.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../bootstrapp/js/jquery-1.11.1.min.js"></script>
+  <script src="../bootstrapp/js/bootstrap.js"></script>
   </body>
 </html>

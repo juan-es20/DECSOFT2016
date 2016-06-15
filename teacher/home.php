@@ -5,7 +5,7 @@ $teacher_home = new TEACHER();
 
 if(!$teacher_home->is_logged_in())
 {
-	$teacher_home->redirect('index.php');
+	$teacher_home->redirect('/index.php');
 }
 
 $stmt = $teacher_home->runQuery("SELECT * FROM teachers WHERE teacher_id=:id");

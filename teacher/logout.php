@@ -11,6 +11,6 @@ if(!$teacher->is_logged_in())
 if($teacher->is_logged_in()!="")
 {
 	$teacher->logout();	
-	$teacher->redirect('index.php');
+	$teacher->redirect('../index.php');
 }
 ?>

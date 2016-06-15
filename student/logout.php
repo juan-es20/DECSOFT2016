@@ -11,6 +11,6 @@ if(!$student->is_logged_in())
 if($student->is_logged_in()!="")
 {
 	$student->logout();	
-	$student->redirect('index.php');
+	$student->redirect('../index.php');
 }
 ?>

@@ -1,0 +1,24 @@
+
+      body{
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+      .logueo{
+         max-width: 600px;
+         padding: 20px;
+         margin: 0 auto;
+      }
+      #sha{
+        max-width: 400px;
+        -webkit -box-shadow: 0px 0px 20px 0px rgba(60,62,62,0,60);
+        -moz -box-shadow: 0px 0px 20px 0px rgba(60,62,62,0,60);
+        box-shadow: 0px 0px 20px 0px rgba(60,62,62,0,60);
+        border-radius:6%;
+      }
+      #login{
+        width: 150px;
+        height: 150px;
+        margin: 0px auto 10px;
+        display: block;
+        border-radius: 80%;
+      }

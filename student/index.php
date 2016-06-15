@@ -22,35 +22,17 @@ if(isset($_POST['btn-login']))
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login | Coding Cage</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="../bootstrapp/css/bootstrap.css">
     <link href="../assets/styles.css" rel="stylesheet" media="screen">
-    <style>
-      body{
-        padding-top: 40px;
-        padding-bottom: 40px;
-      }
-      .logueo{
-         max-width: 300px;
-         padding: 20px;
-         margin: 0 auto;
-      }
-      #sha{
-        max-width: 300px;
-        -webkit -box-shadow: 0px 0px 20px 0px rgba(60,62,62,0,60);
-        -moz -box-shadow: 0px 0px 20px 0px rgba(60,62,62,0,60);
-        box-shadow: 0px 0px 20px 0px rgba(60,62,62,0,60);
-        border-radius:6%;
-      }
-      #login{
-        width: 150px;
-        height: 150px;
-        margin: 0px auto 10px;
-        display: block;
-        border-radius: 80%;
-      }
-  </style>
+    <link  rel="stylesheet" type="text/css" href="../bootstrapp/css/cssAux.css">
+
+    
   </head>
 <body>
     <div class="container well" id="sha">
