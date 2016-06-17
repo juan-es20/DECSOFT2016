@@ -16,10 +16,11 @@ include('header.php');
 
 ?>
 
-        <div class="container">
-          <table class="table table-striped table-bordered">
+        <div class="container-fluid">
+       <div class="table-responsive">
+         <table class="table table-striped table-bordered">
             <thead>
-              <tr>
+              <tr class="success">
                 <th>Materia</th>
                 <th>Descripción</th>
                 <th>Estado</th>
@@ -44,7 +45,7 @@ include('header.php');
                     echo '<td>'. $row['subject_description'] . '</td>';
                     echo '<td>'. $ss_status . '</td>';
                     echo '<td width=150>';
-                    echo '<a class="btn" href="list_exams.php?subject_id='.$row['subject_id'].'">Mostrar Examenes</a>';
+                    echo '<a class="btn btn-primary btn-sm" href="list_exams.php?subject_id='.$row['subject_id'].'">Mostrar Examenes</a>';
                     echo '</tr>';
                   }
               }
@@ -52,7 +53,11 @@ include('header.php');
               ?>
             </tbody>
           </table>
+       </div>
+          
         </div>
+      </div>
+    </div>
 
         <script src="../bootstrap/js/jquery-1.9.1.min.js"></script>
         <script src="../bootstrap/js/bootstrap.min.js"></script>

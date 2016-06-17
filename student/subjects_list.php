@@ -16,10 +16,11 @@ include('header.php');
 
 ?>
 
-        <div class="container">
+        <div class="container-fluid">
+        <div class="table-responsive">
           <table class="table table-striped table-bordered">
             <thead>
-              <tr>
+              <tr class="success">
                 <th>Materia</th>
                 <th>Descripción</th>
                 <th>Acción</th>
@@ -34,13 +35,14 @@ include('header.php');
                 echo '<td>'. $row['subject_name'] . '</td>';
                 echo '<td>'. $row['subject_description'] . '</td>';
                 echo '<td width=85>';
-                echo '<a class="btn" href="register_to_subject.php?subject_id='.$row['subject_id'].'">Inscribirse</a>';
+                echo '<a class="btn btn-primary btn-sm" href="register_to_subject.php?subject_id='.$row['subject_id'].'">Inscribirse</a>';
                 echo '</tr>';
               }
               
               ?>
             </tbody>
-          </table>
+           </table>
+          </div>
         </div>
 
         <script src="../bootstrap/js/jquery-1.9.1.min.js"></script>
