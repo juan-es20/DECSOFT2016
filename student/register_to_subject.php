@@ -32,78 +32,65 @@ $stmt->execute(array(":id"=>$_SESSION['student_session']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 //usado para confirmar una inscripcion
-$confirm = null;
-if (!empty($_GET['confirm'])) {
-	$confirm = $_REQUEST['confirm'];
-}
 
-if (($confirm=="1") && (null!=$subject_id)) {
-	$pdo = Database::connect();
-	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$sql = "INSERT INTO student_subject (student_id,subject_id) values (?,?)";
-	$q = $pdo->prepare($sql);
-	$q->execute(array($_SESSION['student_session'],$subject_id));
-	Database::disconnect();
-	$student_home->redirect('my_subjects.php');
+if(isset($_POST['btn-login']))
+{
+    $clave = trim($_POST['clave']);
+   // $pass = trim($_POST['txtpass']);
+    
+    $pdo=Database::connect();
+    $sql = "SELECT * FROM subjects where subject_id = ?";
+    $q = $pdo->prepare($sql);
+    $q->execute(array($subject_id));
+    $data = $q->fetch(PDO::FETCH_ASSOC);
+
+         if ($data['clave']==$clave) {
+            $pdo = Database::connect();
+             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+             $sql = "INSERT INTO student_subject (student_id,subject_id) values (?,?)";
+             $q = $pdo->prepare($sql);
+             $q->execute(array($_SESSION['student_session'],$subject_id));
+              Database::disconnect();
+             $student_home->redirect('my_subjects.php');
+             }
 }
 
 include('header.php');
 ?>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12">
+
+<div class="container well" id="sha">
+  <form class="logueo" method="POST">
+       
+        <div class="row">
+        <div class="col-sm-12">
            <h3 class="text-center">Confirmar Inscripción</h3>
         </div>
-    </div>  
-     <div class="row">
-        <div class="col-xs-12 col-sm-6">
-           <label class="control-label">Materia:</label>	
-  
         </div>
-        <div class="col-xs-12 col-sm-6">
-            <label class="control-label">Descripción :</label>	
-
-        </div>
-         	
-         	
+      <div class="form-group">
+        <p>
+             Materia: <?php echo $data['subject_name'];?>
+        </p>
+                 
       </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6col-lg-6">
-            <div class="controls">
-			  <p class="">
-			    <?php echo $data['subject_name'];?>
-			  </p>
-			</div>
-        </div> 
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <div class="controls">
-			    <p class="text-center">
-				   <?php echo $data['subject_description'];?>
-			    </p>
-		    </div>
-        </div> 
-    </div> 
-     <div class="row">
-        <div class="col-sm-6">
-             <div class="form-actions">
-             <label class="checkbox">
-			   <a class="btn btn-primary btn-sm pull-right" href="javascript:history.back()">Back</a>
-			   </label>
-			 </div>
-        </div>
-        <div class="col-sm-6">
-             <div class="controls">
-			    <label class="checkbox">
-					<?php 
-					  echo '<a class="btn btn-sm btn-primary" href="register_to_subject.php?subject_id='.$subject_id.'&confirm=1">Confirmar Inscripción</a>';
-					?>
-			     </label>
-			</div>
-        </div>
-     </div>
+      <div class="form-group">
+        <p>
+              Descripcion: <?php echo $data['subject_description'];?>
+        </p>
 
-  </div>  
-
+      </div>
+      <div>
+         <p> clave de acceso: <input type="text" class="form-control" placeholder="clave de inscripcion" name="clave" id="clave" requerid autofocus>
+         </p>
+      </div>
+    <div class="row">
+        <a class="btn btn-primary btn-sm pull-right" href="javascript:history.back()">Back</a>
+      
+      <button class="btn btn-primary btn-sm" type="submit" name="btn-login">confirmar suscripcion</button>
+    </div>
+      
+  </form>
+</div>
+        <link  rel="stylesheet" type="text/css" href="../bootstrapp/css/cssAux.css">
         <script src="../bootstrap/js/jquery-1.9.1.min.js"></script>
         <script src="../bootstrap/js/bootstrap.min.js"></script>
         <script src="../assets/scripts.js"></script>
