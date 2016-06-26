@@ -34,7 +34,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a tabindex="-1" href="logout.php">Logout</a>
+                                        <a tabindex="-1" href="../logout.php">Logout</a>
                                     </li>
                                 </ul>
                             </li>

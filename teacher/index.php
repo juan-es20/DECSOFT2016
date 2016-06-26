@@ -14,7 +14,7 @@ if(isset($_POST['btn-login']))
 	
 	if($teacher_login->login($email,$pass))
 	{
-		$teacher_login->redirect('home.php');
+		$teacher_login->redirect('admin_students/index.php');
 	}
 }
 ?>
