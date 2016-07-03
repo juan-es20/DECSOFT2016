@@ -23,39 +23,40 @@ if(isset($_POST['btn-signup']))
 	$stmt->execute(array(":email_id"=>$email));
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);
 	
-	if($stmt->rowCount() > 0)
-	{
-		if(strlen($upass) < 6){
-			if($reg_student->comprobar_nombre_usuario($name) and $reg_student->comprobar_nombre_usuario($lastname)){
-		       $msg = "
+	if(!($reg_student->comprobar_nombre_usuario($name) and $reg_student->comprobar_nombre_usuario($lastname))){
+		$msg = "
 		           <div class='alert alert-error'>
 				  <button class='close' data-dismiss='alert'>&times;</button>
-					<strong>Sorry !</strong>  ya existe un usuario con ese email y longitud de password tiene que ser mas de 6 caracteres , por favor ingrese otro email
+					<strong>Sorry !</strong> por favor escriba nombre y apellido caracteres validos
 			      </div>
 			     ";
-			}else{
+	}else{
+	      if($stmt->rowCount() > 0)
+	     {
+
+          $msg = "
+		           <div class='alert alert-error'>
+				  <button class='close' data-dismiss='alert'>&times;</button>
+					<strong>Sorry !</strong> por favor verifique su email, ya existe un usuario con ese email
+			      </div>
+			     ";
+
+          }else{
+		   if(strlen($upass) < 6){
+			
+			
 				 $msg = "
 		         <div class='alert alert-error'>
 				  <button class='close' data-dismiss='alert'>&times;</button>
-					<strong>Sorry !</strong>  ya existe un usuario con ese email y longitud de password tiene que ser mas de 6 caracteres verifique el nombre y apellido, por favor ingrese otro email los nombre y apellido tienen que ser caracteres o numeros validos
+					<strong>Sorry !</strong> longitud de password tiene que ser mas de 6 caracteres 
 			    </div>
 			   ";
 			}
-		 }else{
-
-		 $msg = "
-		      <div class='alert alert-error'>
-				<button class='close' data-dismiss='alert'>&times;</button>
-					<strong>Sorry !</strong>  ya existe un usuario con ese email , por favor ingrese otro email
-			  </div>
-			  ";	
-		 }
-	}
-	else
-	{
-		if($reg_student->register($name,$lastname,$email,$upass,$code))
-		{			
-			$id = $reg_student->lasdID();		
+	         else
+	          {
+		       if($reg_student->register($name,$lastname,$email,$upass,$code))
+		         {			
+			   $id = $reg_student->lasdID();		
 			$key = base64_encode($id);
 			$id = $key;
 			
@@ -85,6 +86,8 @@ if(isset($_POST['btn-signup']))
 			echo "sorry , Query could no execute...";
 		}		
 	}
+}
+}
 }
 ?>
 <!DOCTYPE html>
