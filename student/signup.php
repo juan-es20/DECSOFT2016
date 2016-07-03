@@ -26,7 +26,7 @@ if(isset($_POST['btn-signup']))
 	if($stmt->rowCount() > 0)
 	{
 		if(strlen($upass) < 6){
-			if($reg_student->comprobar_nombre_usuario($name) and $reg_student->comprobar_nombre_usuario($lastname){
+			if($reg_student->comprobar_nombre_usuario($name) and $reg_student->comprobar_nombre_usuario($lastname)){
 		       $msg = "
 		           <div class='alert alert-error'>
 				  <button class='close' data-dismiss='alert'>&times;</button>
