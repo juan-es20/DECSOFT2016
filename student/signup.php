@@ -25,12 +25,31 @@ if(isset($_POST['btn-signup']))
 	
 	if($stmt->rowCount() > 0)
 	{
-		$msg = "
+		if(strlen($upass) < 6){
+			if($reg_student->comprobar_nombre_usuario($name) and $reg_student->comprobar_nombre_usuario($lastname){
+		       $msg = "
+		           <div class='alert alert-error'>
+				  <button class='close' data-dismiss='alert'>&times;</button>
+					<strong>Sorry !</strong>  ya existe un usuario con ese email y longitud de password tiene que ser mas de 6 caracteres , por favor ingrese otro email
+			      </div>
+			     ";
+			}else{
+				 $msg = "
+		         <div class='alert alert-error'>
+				  <button class='close' data-dismiss='alert'>&times;</button>
+					<strong>Sorry !</strong>  ya existe un usuario con ese email y longitud de password tiene que ser mas de 6 caracteres verifique el nombre y apellido, por favor ingrese otro email los nombre y apellido tienen que ser caracteres o numeros validos
+			    </div>
+			   ";
+			}
+		 }else{
+
+		 $msg = "
 		      <div class='alert alert-error'>
 				<button class='close' data-dismiss='alert'>&times;</button>
-					<strong>Sorry !</strong>  email allready exists , Please Try another one
+					<strong>Sorry !</strong>  ya existe un usuario con ese email , por favor ingrese otro email
 			  </div>
-			  ";
+			  ";	
+		 }
 	}
 	else
 	{
