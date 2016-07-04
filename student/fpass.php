@@ -22,7 +22,7 @@ if(isset($_POST['btn-submit']))
 		
 		$stmt = $student->runQuery("UPDATE students SET tokenCode=:token WHERE student_email=:email");
 		$stmt->execute(array(":token"=>$code,"email"=>$email));
-		
+		$currentUrl = $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
 		$message= "
 				   Hello , $email
 				   <br /><br />
@@ -30,7 +30,7 @@ if(isset($_POST['btn-submit']))
 				   <br /><br />
 				   Click Following Link To Reset Your Password 
 				   <br /><br />
-				   <a href='http://localhost/tis_system/student/resetpass.php?id=$id&code=$code'>click here to reset your password</a>
+				   <a href='http://$currentUrl/resetpass.php?id=$id&code=$code'>click here to reset your password</a>
 				   <br /><br />
 				   thank you :)
 				   ";

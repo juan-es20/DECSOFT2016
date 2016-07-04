@@ -59,14 +59,14 @@ if(isset($_POST['btn-signup']))
 			   $id = $reg_student->lasdID();		
 			$key = base64_encode($id);
 			$id = $key;
-			
+			$currentUrl = $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
 			$message = "					
 						Hello $name,
 						<br /><br />
 						Bienvenido a TIS!<br/>
 						para completar tu registro por favor haz click en el siguiente link<br/>
 						<br /><br />
-						<a href='http://localhost/xxxxxx/verify.php?id=$id&code=$code'>Click AQUI para activar tu cuenta</a>
+						<a href='http://$currentUrl/verify.php?id=$id&code=$code'>Click AQUI para activar tu cuenta</a>
 						<br /><br />
 						Thanks,";
 						
